@@ -9,26 +9,23 @@ Authors: Jiahao Ma, Hongzong Li, Jian-Dong Huang, Ye-Fan Hu, Yifan Chen
 
 We introduce Fusion-pMT, a novel model utilizing sequence fusion and a unified encoder enhanced with amino acid physicochemical properties for improved immunogenicity prediction.
 Installation
-bash
 
-pip install torch numpy pandas scikit-learn scipy tqdm
+    pip install torch numpy pandas scikit-learn scipy tqdm
 
-Usage
-bash
-
-python infer.py --input input.csv
+    python infer.py --input input.csv
 
 (input.csv should contain peptide, MHC, and TCR sequence data in CSV format.)
-Highlights
+Highlights:
 
-    Unified encoder integrating physicochemical properties and positional embeddings.
-    Sequence-form preserved fusion via Cross Attention.
-    Pre-trained on peptide-MHC binding data for better performance.
+1.Unified encoder integrating physicochemical properties and positional embeddings.
+2.Sequence-form preserved fusion via Cross Attention.
+3.Pre-trained on peptide-MHC binding data for better performance.
 
-Contact
+# Contact
 
 Feel free to open an issue or contact authors for questions.
-Citation
+
+# Citation
 
 If you find this work useful, please cite:
 bibtex
