@@ -9,11 +9,6 @@ Installation
     python infer.py --input input.csv
 
 (input.csv should contain peptide, MHC, and TCR sequence data in CSV format.)
-Highlights:
-
-1.Unified encoder integrating physicochemical properties and positional embeddings.
-2.Sequence-form preserved fusion via Cross Attention.
-3.Pre-trained on peptide-MHC binding data for better performance.
 
 # Contact
 
