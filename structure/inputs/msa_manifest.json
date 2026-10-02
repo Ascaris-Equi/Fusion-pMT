@@ -1,0 +1,23 @@
+{
+  "server": "https://api.colabfold.com",
+  "ticket_id": "YNqxx3KDKYwHkeoSTSmHbSffxu6fxQqf0r0UzQ",
+  "mode": "env",
+  "templates": false,
+  "homolog_pairing": false,
+  "query_ids": {
+    "A": 101,
+    "B": 102,
+    "D": 103
+  },
+  "rows_per_chain": {
+    "A": 6802,
+    "B": 6013,
+    "C": 1,
+    "D": 9431
+  },
+  "peptide_msa": "query only, not sent to MSA server",
+  "public_input_pdb": "6ZKW",
+  "source_query_sha256": "ba01d0298f45b9b2e6b3a39b4cb754040dda1eadae230e0ba7b9db5b0e7a87d9",
+  "archive_sha256": "75a04784efd3b7ad10547af759bf41d66619ca7e149afc36f23282955a4e186f",
+  "a3m_sha256": "8dd53ddbff9e7757f4cacfa759c158dde95ca4cc591a6d6178ccb723fb9e0a1a"
+}

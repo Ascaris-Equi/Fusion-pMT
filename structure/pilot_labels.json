@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0",
+  "scope": "tutorial functional recognition not independent binding validation",
+  "source": {
+    "citation": "Dolton et al. Targeting of multiple tumor-associated antigens by individual T cell receptors during successful cancer immunotherapy. Cell. 2023;186(16):3333-3349.e27.",
+    "doi": "10.1016/j.cell.2023.06.020",
+    "url": "https://doi.org/10.1016/j.cell.2023.06.020",
+    "tutorial_repository": "https://github.com/jonlevi/enFoldX",
+    "tutorial_commit": "89c8a01f50a0e3daceef06fb63de9a5481328dde",
+    "tutorial_input": "examples/MEL_data/MEL_enfoldx_input.csv",
+    "tutorial_input_url": "https://github.com/jonlevi/enFoldX/blob/89c8a01f50a0e3daceef06fb63de9a5481328dde/examples/MEL_data/MEL_enfoldx_input.csv"
+  },
+  "tcr_ids": ["MEL5", "MEL8"],
+  "mhc_allele": "HLA-A*02:01",
+  "data_pair_count": 18,
+  "peptide_count": 9,
+  "labels_apply_to_all_tcr_ids": true,
+  "label_definition": "recognition_label=1 denotes experimentally reported cognate functional recognition; recognition_label=0 denotes the tutorial's non-cognate category under the reported assay conditions, not an assertion of zero affinity or absolute non-binding.",
+  "sequence_policy": "Peptide sequences are copied unchanged from the published enFoldX tutorial input. No sequences are generated or modified. The tutorial's additional peptides.csv entries are not included.",
+  "peptides": {
+    "EAAGIGILTV": {
+      "peptide_name": "MelanA",
+      "recognition_label": 1,
+      "label_basis": "MEL8 and MEL5 recognize the Melan A 10-mer: activation assays and HLA-A*02:01 tetramer staining in Dolton et al., Figures 2C-2E and 3F-3G."
+    },
+    "LLLGIGILVL": {
+      "peptide_name": "BST2-10",
+      "recognition_label": 1,
+      "label_basis": "MEL8 and MEL5 recognize the BST2 10-mer: activation assays and HLA-A*02:01 tetramer staining in Dolton et al., Figures 2C-2E and 3F-3G."
+    },
+    "NLSALGIFST": {
+      "peptide_name": "IMP2",
+      "recognition_label": 1,
+      "label_basis": "MEL8 and MEL5 recognize the IMP2 10-mer: activation assays and HLA-A*02:01 tetramer staining in Dolton et al., Figures 2C-2E and 3F-3G."
+    },
+    "LLLGIGILV": {
+      "peptide_name": "BST2-9",
+      "recognition_label": 0,
+      "label_basis": "The enFoldX tutorial treats this shorter BST2 9-mer as non-cognate. Dolton et al., Figure S7C-S7F, report poor or absent recognition relative to BST2-10; this assay-specific binary label does not establish zero binding affinity."
+    },
+    "LILNIAIFFV": {
+      "peptide_name": "DSE",
+      "recognition_label": 0,
+      "label_basis": "Non-cognate peptide in the published enFoldX MEL tutorial. Dolton et al., Figures 2C-2D and 3G, test the MEL8 CANTiGEN candidates and report recognition of MelanA10, BST2-10 and IMP2 rather than the remaining candidates under those assay conditions."
+    },
+    "ISAVVGILLV": {
+      "peptide_name": "ERBB2",
+      "recognition_label": 0,
+      "label_basis": "Non-cognate peptide in the published enFoldX MEL tutorial. Dolton et al., Figures 2C-2D and 3G, test the MEL8 CANTiGEN candidates and report recognition of MelanA10, BST2-10 and IMP2 rather than the remaining candidates under those assay conditions."
+    },
+    "NLAAVGLFPA": {
+      "peptide_name": "IMP1",
+      "recognition_label": 0,
+      "label_basis": "Non-cognate peptide in the published enFoldX MEL tutorial. Dolton et al., Figures 2C-2D and 3G, test the MEL8 CANTiGEN candidates and report recognition of MelanA10, BST2-10 and IMP2 rather than the remaining candidates under those assay conditions."
+    },
+    "VYAALGILQG": {
+      "peptide_name": "MRP3",
+      "recognition_label": 0,
+      "label_basis": "Non-cognate peptide in the published enFoldX MEL tutorial. Dolton et al., Figures 2C-2D and 3G, test the MEL8 CANTiGEN candidates and report recognition of MelanA10, BST2-10 and IMP2 rather than the remaining candidates under those assay conditions."
+    },
+    "TSSAIPIMTV": {
+      "peptide_name": "MUC-16TSS",
+      "recognition_label": 0,
+      "label_basis": "Non-cognate peptide in the published enFoldX MEL tutorial. Dolton et al., Figures 2C-2D and 3G, test the MEL8 CANTiGEN candidates and report recognition of MelanA10, BST2-10 and IMP2 rather than the remaining candidates under those assay conditions."
+    }
+  }
+}

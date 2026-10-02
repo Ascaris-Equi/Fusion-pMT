@@ -1,0 +1,46 @@
+{
+  "scope": "new local AF2-Multimer reference pilot; not binding classification",
+  "msa_protocol": "msa",
+  "templates": false,
+  "pdb": "6ZKW",
+  "model": "alphafold2_multimer_v3_model_1",
+  "seed": 42,
+  "num_recycles_requested": 3,
+  "ptm": 0.18,
+  "iptm": 0.08,
+  "mean_plddt": 31.92507211538462,
+  "peptide_tcr_mean_bidirectional_pae_angstrom": 31.003786098874205,
+  "mhc_aligned_ca_rmsd_angstrom": {
+    "tcra": 62.925411070588524,
+    "tcrb": 61.169072816662336,
+    "pep": 37.22514430867437,
+    "mhca": 21.33813715339002
+  },
+  "chain_mapping": {
+    "tcra": {
+      "predicted_chain": "A",
+      "reference_chain": "D",
+      "matched_ca": 112,
+      "input_length": 112
+    },
+    "tcrb": {
+      "predicted_chain": "B",
+      "reference_chain": "E",
+      "matched_ca": 114,
+      "input_length": 115
+    },
+    "pep": {
+      "predicted_chain": "C",
+      "reference_chain": "C",
+      "matched_ca": 9,
+      "input_length": 9
+    },
+    "mhca": {
+      "predicted_chain": "D",
+      "reference_chain": "A",
+      "matched_ca": 180,
+      "input_length": 180
+    }
+  },
+  "reference_training_overlap": "model training and nearby-structure overlap not systematically excluded; single-reference pilot, not independent validation"
+}

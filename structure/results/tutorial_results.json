@@ -1,0 +1,312 @@
+{
+  "scope": "published tutorial features rescored locally; not newly predicted structures or independent validation",
+  "upstream_commit": "89c8a01f50a0e3daceef06fb63de9a5481328dde",
+  "n_pairs": 18,
+  "n_functional_positive": 6,
+  "n_functional_control": 12,
+  "original_af3_structures": 900,
+  "original_samples_per_pair": 50,
+  "one_seed_samples_per_pair": 5,
+  "aggregation_max_abs_error": 1.4210854715202004e-14,
+  "official_prediction_max_abs_error": 4.440892098500626e-16,
+  "sources": {
+    "input": {
+      "url": "https://raw.githubusercontent.com/jonlevi/enFoldX/89c8a01f50a0e3daceef06fb63de9a5481328dde/examples/MEL_data/MEL_enfoldx_input.csv",
+      "git_blob": "4e5c78ec3e8370cb6baeab332b66c6f6f66a26f7",
+      "sha256": "a6010332d62806a544ecd0ab60a8927a2a45eb09db612c54e504e2cd0227ebcc"
+    },
+    "ensemble": {
+      "url": "https://raw.githubusercontent.com/jonlevi/enFoldX/89c8a01f50a0e3daceef06fb63de9a5481328dde/examples/enfoldx_extracted_features/ensemble_features.csv",
+      "git_blob": "f07b2fefeb590e1d8c97f3ea915ec09a35f17a8a",
+      "sha256": "8245a5e7e0e5aad181dded4154e3e0790eae17196d237be407a1b248a5f83962"
+    },
+    "samples": {
+      "url": "https://raw.githubusercontent.com/jonlevi/enFoldX/89c8a01f50a0e3daceef06fb63de9a5481328dde/examples/enfoldx_extracted_features/all_structures_features.csv",
+      "git_blob": "7ec438fd1429383265108d3476d83c24854929f0",
+      "sha256": "843d7b2063325e0a95adde9894f41fa019b756e8723aaebf6944816744fe585b"
+    },
+    "reference": {
+      "url": "https://raw.githubusercontent.com/jonlevi/enFoldX/89c8a01f50a0e3daceef06fb63de9a5481328dde/examples/enfoldx_predictions/enFoldX_predictions.csv",
+      "git_blob": "d6b1e6caeb3fe7e5102d91a91a41cef9a211b7d8",
+      "sha256": "975ec556b619f619fce14ef0b568a3762d7106e2868eaca8631fbf9936b6f4b4"
+    },
+    "human": {
+      "url": "https://raw.githubusercontent.com/jonlevi/enFoldX/89c8a01f50a0e3daceef06fb63de9a5481328dde/models/enFoldX_human_vFebSept_DecoyPerm.pkl",
+      "git_blob": "fc5bd3d2ec400efc93378211da5ae0914124ff56",
+      "sha256": "72d0fe7dd48e2dd84d695d00d27a1fb3a921dab969dd91deecfac5cedd412b8a"
+    },
+    "human_decoy": {
+      "url": "https://raw.githubusercontent.com/jonlevi/enFoldX/89c8a01f50a0e3daceef06fb63de9a5481328dde/models/enFoldX_human_vFebSept_Decoy.pkl",
+      "git_blob": "b671d1e4140acae025130e6837b4d2962623a40a",
+      "sha256": "c25bf50347a5bfbb835f5c8f1da6d47273fff8b238af999e25679f3bddae93e6"
+    },
+    "human_1seed": {
+      "url": "https://raw.githubusercontent.com/jonlevi/enFoldX/89c8a01f50a0e3daceef06fb63de9a5481328dde/models/enFoldX_human_vFebSept_DecoyPerm_1seed.pkl",
+      "git_blob": "024dade0fb890813effddfd9273782b6635bbb2a",
+      "sha256": "35dcb66be3112a3f575dc6f72a1fd6c6ff03664101a2cd59f5c7b2b3644382b9"
+    }
+  },
+  "versions": {
+    "python": "3.11.14",
+    "numpy": "1.26.4",
+    "pandas": "2.2.3",
+    "scipy": "1.13.1",
+    "sklearn": "1.3.2"
+  },
+  "label_source": {
+    "citation": "Dolton et al. Targeting of multiple tumor-associated antigens by individual T cell receptors during successful cancer immunotherapy. Cell. 2023;186(16):3333-3349.e27.",
+    "doi": "10.1016/j.cell.2023.06.020",
+    "url": "https://doi.org/10.1016/j.cell.2023.06.020",
+    "tutorial_repository": "https://github.com/jonlevi/enFoldX",
+    "tutorial_commit": "89c8a01f50a0e3daceef06fb63de9a5481328dde",
+    "tutorial_input": "examples/MEL_data/MEL_enfoldx_input.csv",
+    "tutorial_input_url": "https://github.com/jonlevi/enFoldX/blob/89c8a01f50a0e3daceef06fb63de9a5481328dde/examples/MEL_data/MEL_enfoldx_input.csv"
+  },
+  "metrics": {
+    "human": {
+      "roc_auc": 0.9583333333333333,
+      "average_precision": 0.915079365079365,
+      "standardized_pauc_fpr_0_1": 0.7807017543859649,
+      "per_tcr_auc": {
+        "MEL5": 1.0,
+        "MEL8": 0.9444444444444444
+      }
+    },
+    "human_decoy": {
+      "roc_auc": 0.9583333333333334,
+      "average_precision": 0.9305555555555555,
+      "standardized_pauc_fpr_0_1": 0.8391812865497076,
+      "per_tcr_auc": {
+        "MEL5": 1.0,
+        "MEL8": 1.0
+      }
+    },
+    "human_1seed": {
+      "roc_auc": 1.0,
+      "average_precision": 1.0,
+      "standardized_pauc_fpr_0_1": 1.0,
+      "per_tcr_auc": {
+        "MEL5": 1.0,
+        "MEL8": 1.0
+      }
+    }
+  },
+  "pairs": [
+    {
+      "complex_id": "MEL8_BST2-10",
+      "TRA_CDR3": "CAVQKLVF",
+      "TRB_CDR3": "CASSYSFTEATYEQYF",
+      "peptide": "LLLGIGILVL",
+      "peptide_name": "BST2-10",
+      "recognition_label": 1,
+      "TCR": "MEL8",
+      "human": 0.459985750249662,
+      "human_decoy": 0.771979695022208,
+      "human_1seed": 0.540777283545696
+    },
+    {
+      "complex_id": "MEL5_BST2-10",
+      "TRA_CDR3": "CAVNVAGKSTF",
+      "TRB_CDR3": "CAWSETGLGTGELFF",
+      "peptide": "LLLGIGILVL",
+      "peptide_name": "BST2-10",
+      "recognition_label": 1,
+      "TCR": "MEL5",
+      "human": 0.456686768178286,
+      "human_decoy": 0.673858139193242,
+      "human_1seed": 0.488401179866964
+    },
+    {
+      "complex_id": "MEL8_BST2-9",
+      "TRA_CDR3": "CAVQKLVF",
+      "TRB_CDR3": "CASSYSFTEATYEQYF",
+      "peptide": "LLLGIGILV",
+      "peptide_name": "BST2-9",
+      "recognition_label": 0,
+      "TCR": "MEL8",
+      "human": 0.267851269891687,
+      "human_decoy": 0.528695754105761,
+      "human_1seed": 0.271936822214702
+    },
+    {
+      "complex_id": "MEL5_BST2-9",
+      "TRA_CDR3": "CAVNVAGKSTF",
+      "TRB_CDR3": "CAWSETGLGTGELFF",
+      "peptide": "LLLGIGILV",
+      "peptide_name": "BST2-9",
+      "recognition_label": 0,
+      "TCR": "MEL5",
+      "human": 0.167037972653469,
+      "human_decoy": 0.250177194803965,
+      "human_1seed": 0.146059956049224
+    },
+    {
+      "complex_id": "MEL8_DSE",
+      "TRA_CDR3": "CAVQKLVF",
+      "TRB_CDR3": "CASSYSFTEATYEQYF",
+      "peptide": "LILNIAIFFV",
+      "peptide_name": "DSE",
+      "recognition_label": 0,
+      "TCR": "MEL8",
+      "human": 0.323273398322497,
+      "human_decoy": 0.67577132918527,
+      "human_1seed": 0.306040431711249
+    },
+    {
+      "complex_id": "MEL5_DSE",
+      "TRA_CDR3": "CAVNVAGKSTF",
+      "TRB_CDR3": "CAWSETGLGTGELFF",
+      "peptide": "LILNIAIFFV",
+      "peptide_name": "DSE",
+      "recognition_label": 0,
+      "TCR": "MEL5",
+      "human": 0.248837932482206,
+      "human_decoy": 0.40717881262201,
+      "human_1seed": 0.175622687161915
+    },
+    {
+      "complex_id": "MEL8_ERBB2",
+      "TRA_CDR3": "CAVQKLVF",
+      "TRB_CDR3": "CASSYSFTEATYEQYF",
+      "peptide": "ISAVVGILLV",
+      "peptide_name": "ERBB2",
+      "recognition_label": 0,
+      "TCR": "MEL8",
+      "human": 0.271023939954801,
+      "human_decoy": 0.362370608619107,
+      "human_1seed": 0.279233141552021
+    },
+    {
+      "complex_id": "MEL5_ERBB2",
+      "TRA_CDR3": "CAVNVAGKSTF",
+      "TRB_CDR3": "CAWSETGLGTGELFF",
+      "peptide": "ISAVVGILLV",
+      "peptide_name": "ERBB2",
+      "recognition_label": 0,
+      "TCR": "MEL5",
+      "human": 0.20031613844987,
+      "human_decoy": 0.386611083823811,
+      "human_1seed": 0.190715759091596
+    },
+    {
+      "complex_id": "MEL8_IMP1",
+      "TRA_CDR3": "CAVQKLVF",
+      "TRB_CDR3": "CASSYSFTEATYEQYF",
+      "peptide": "NLAAVGLFPA",
+      "peptide_name": "IMP1",
+      "recognition_label": 0,
+      "TCR": "MEL8",
+      "human": 0.50883240636558,
+      "human_decoy": 0.642800814226832,
+      "human_1seed": 0.471835114958274
+    },
+    {
+      "complex_id": "MEL5_IMP1",
+      "TRA_CDR3": "CAVNVAGKSTF",
+      "TRB_CDR3": "CAWSETGLGTGELFF",
+      "peptide": "NLAAVGLFPA",
+      "peptide_name": "IMP1",
+      "recognition_label": 0,
+      "TCR": "MEL5",
+      "human": 0.231730281863871,
+      "human_decoy": 0.319392895276381,
+      "human_1seed": 0.297071569120009
+    },
+    {
+      "complex_id": "MEL8_IMP2",
+      "TRA_CDR3": "CAVQKLVF",
+      "TRB_CDR3": "CASSYSFTEATYEQYF",
+      "peptide": "NLSALGIFST",
+      "peptide_name": "IMP2",
+      "recognition_label": 1,
+      "TCR": "MEL8",
+      "human": 0.760733658092144,
+      "human_decoy": 0.936168537863838,
+      "human_1seed": 0.518045663254451
+    },
+    {
+      "complex_id": "MEL5_IMP2",
+      "TRA_CDR3": "CAVNVAGKSTF",
+      "TRB_CDR3": "CAWSETGLGTGELFF",
+      "peptide": "NLSALGIFST",
+      "peptide_name": "IMP2",
+      "recognition_label": 1,
+      "TCR": "MEL5",
+      "human": 0.483379388267081,
+      "human_decoy": 0.581867861267646,
+      "human_1seed": 0.518153672311361
+    },
+    {
+      "complex_id": "MEL8_MelanA",
+      "TRA_CDR3": "CAVQKLVF",
+      "TRB_CDR3": "CASSYSFTEATYEQYF",
+      "peptide": "EAAGIGILTV",
+      "peptide_name": "MelanA",
+      "recognition_label": 1,
+      "TCR": "MEL8",
+      "human": 0.785316170390865,
+      "human_decoy": 0.928920120316997,
+      "human_1seed": 0.798027000038522
+    },
+    {
+      "complex_id": "MEL5_MelanA",
+      "TRA_CDR3": "CAVNVAGKSTF",
+      "TRB_CDR3": "CAWSETGLGTGELFF",
+      "peptide": "EAAGIGILTV",
+      "peptide_name": "MelanA",
+      "recognition_label": 1,
+      "TCR": "MEL5",
+      "human": 0.65940698249512,
+      "human_decoy": 0.750751483427069,
+      "human_1seed": 0.596703133988294
+    },
+    {
+      "complex_id": "MEL8_MRP3",
+      "TRA_CDR3": "CAVQKLVF",
+      "TRB_CDR3": "CASSYSFTEATYEQYF",
+      "peptide": "VYAALGILQG",
+      "peptide_name": "MRP3",
+      "recognition_label": 0,
+      "TCR": "MEL8",
+      "human": 0.222102778437553,
+      "human_decoy": 0.416650095934056,
+      "human_1seed": 0.398412926320583
+    },
+    {
+      "complex_id": "MEL5_MRP3",
+      "TRA_CDR3": "CAVNVAGKSTF",
+      "TRB_CDR3": "CAWSETGLGTGELFF",
+      "peptide": "VYAALGILQG",
+      "peptide_name": "MRP3",
+      "recognition_label": 0,
+      "TCR": "MEL5",
+      "human": 0.102703931174259,
+      "human_decoy": 0.225557007401831,
+      "human_1seed": 0.213356057599186
+    },
+    {
+      "complex_id": "MEL8_MUC-16TSS",
+      "TRA_CDR3": "CAVQKLVF",
+      "TRB_CDR3": "CASSYSFTEATYEQYF",
+      "peptide": "TSSAIPIMTV",
+      "peptide_name": "MUC-16TSS",
+      "recognition_label": 0,
+      "TCR": "MEL8",
+      "human": 0.055579228580352,
+      "human_decoy": 0.049677022241455,
+      "human_1seed": 0.101902762426037
+    },
+    {
+      "complex_id": "MEL5_MUC-16TSS",
+      "TRA_CDR3": "CAVNVAGKSTF",
+      "TRB_CDR3": "CAWSETGLGTGELFF",
+      "peptide": "TSSAIPIMTV",
+      "peptide_name": "MUC-16TSS",
+      "recognition_label": 0,
+      "TCR": "MEL5",
+      "human": 0.068358443849173,
+      "human_decoy": 0.056514910792138,
+      "human_1seed": 0.043670845349481
+    }
+  ]
+}

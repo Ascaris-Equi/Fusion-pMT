@@ -1,0 +1,25 @@
+{
+  "pdb": "6ZKW",
+  "upstream_example_job_id": "test_clsI_6kzw",
+  "sequence_source": "https://raw.githubusercontent.com/piercelab/tcrmodel2/90536deaf766fe169f51679ce9456f3b165be5c9/README.md",
+  "source_commit": "90536deaf766fe169f51679ce9456f3b165be5c9",
+  "source_readme_sha256": "92e51d6068bbbf28fd0740987d720c558468cfe0e271a9dd378ecaa53da071bc",
+  "reference_url": "https://files.rcsb.org/download/6ZKW.pdb",
+  "reference_sha256": "3a1c38cd921b881243e2dc9080f394f3f011ffae07aaf11150e96f0722d5c77b",
+  "chain_roles": {
+    "A": "tcra",
+    "B": "tcrb",
+    "C": "pep",
+    "D": "mhca"
+  },
+  "chain_sequences": {
+    "A": "AQEVTQIPAALSVPEGENLVLNCSFTDSAIYNLQWFRQDPGKGLTSLLLIQSSQREQTSGRLNASLDKSSGRSTLYIAASQPGDSATYLCAVTNQAGTALIFGKGTTLSVSS",
+    "B": "NAGVTQTPKFQVLKTGQSMTLQCSQDMNHEYMSWYRQDPGMGLRLIHYSVGAGITDQGEVPNGYNVSRSTTEDFPLRLLSAAPSQTSVYFCASSYSIRGSRGEQFFGPGTRLTVL",
+    "C": "RLPAKAPLL",
+    "D": "SHSLKYFHTSVSRPGRGEPRFISVGYVDDTQFVRFDNDAASPRMVPRAPWMEQEGSEYWDRETRSARDTAQIFRVNLRTLRGYYNQSEAGSHTLQWMHGCELGPDGRFLRGYEQFAYDGKDYLTLNEDLRSWTAVDTAAQISEQKSNDASEAEHQRAYLEDTCVEWLHKYLEKGKETLLH"
+  },
+  "scope": "published TCRmodel2 domain inputs only; not TCRmodel2 algorithm reproduction",
+  "msa_mode": "single_sequence",
+  "templates": false,
+  "training_overlap": "model training and nearby-structure overlap not systematically excluded; single-reference pilot, not independent validation"
+}

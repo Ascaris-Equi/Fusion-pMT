@@ -1,6 +1,6 @@
 # 利用结构预测 TCR–pMHC 结合：可行性调研
 
-更新：2026-10-02。范围：`Ascaris-Equi/Fusion-pMT` 的新研究方向；本目录不改已有序列模型。以下为文献与代码调研，不是本地实验结果。
+更新：2026-10-02。范围：`Ascaris-Equi/Fusion-pMT` 的新研究方向；本目录不改已有序列模型。第 1–6 节为调研与验证计划；本地首轮结果和复现命令见第 7 节。
 
 ## 1. 结论
 
@@ -57,21 +57,21 @@ enFoldX 官方提供 `human_1seed`（1 seed、5 个 AF3 样本）与 10-seed 人
 
 Boltz 的 `affinity_pred_value` / `affinity_probability_binary` 不应用作 TCR–pMHC 结合输出。[官方 affinity 适用范围](https://github.com/jwohlwend/boltz/blob/main/docs/prediction.md#binding-affinity-prediction)
 
-部署时分别核对代码和权重的使用条款。AF3 与 enFoldX 有各自条款；NetTCR-struc 官方限定学术非商业用途。本目录只放调研，不重新分发第三方模型或数据。[AF3](https://github.com/google-deepmind/alphafold3)、[enFoldX 条款](https://github.com/jonlevi/enFoldX/blob/main/TERMS_OF_USE.md)、[NetTCR-struc 许可](https://github.com/mnielLab/NetTCR-struc#license)
+部署时分别核对代码和权重的使用条款。AF3 与 enFoldX 有各自条款；NetTCR-struc 官方限定学术非商业用途。本目录不重新分发第三方模型权重；公开输入的来源与校验值随结果记录。[AF3](https://github.com/google-deepmind/alphafold3)、[enFoldX 条款](https://github.com/jonlevi/enFoldX/blob/main/TERMS_OF_USE.md)、[NetTCR-struc 许可](https://github.com/mnielLab/NetTCR-struc#license)
 
 ## 5. 本机资源可行性
 
-按现有 RTX 5090 32 GB 工作站规划，首先做小规模兼容性试跑；尚未验证这台机器的 AF3/JAX 或上述工具能否正常运行。AF3 官方充分测试的是 A100/H100 80 GB，不能直接将其速度表换算成本机吞吐。[AF3 硬件与性能说明](https://github.com/google-deepmind/alphafold3/blob/main/docs/performance.md)
+本机 RTX 5090 32 GB 已实际运行 AF2-Multimer/ColabFold 1.5.5（JAX 0.5.3）；AF3 本地推理尚未验证。AF3 官方充分测试的是 A100/H100 80 GB，不能直接将其速度表换算成本机吞吐。[AF3 硬件与性能说明](https://github.com/google-deepmind/alphafold3/blob/main/docs/performance.md)
 
 资源不仅是显存：enFoldX 官方给完整 AF3 数据库预留约 1 TB；TCRmodel2 的 `pdb_mmcif + params` 解压后约 120 GB。磁盘、CPU/RAM、驱动及框架兼容性应在下载之前核对。[enFoldX requirements](https://github.com/jonlevi/enFoldX#requirements)、[TCRmodel2 数据库说明](https://github.com/piercelab/tcrmodel2#download-database)
 
 可缓存并复用每条链的 MSA/模板结果，分开 CPU 搜索与 GPU 推理，避免反复搜索同一 HLA/TCR。完全无 MSA/无模板属于另一种协议，不能默认为原文复现。[AF3 分阶段运行](https://github.com/google-deepmind/alphafold3/blob/main/docs/performance.md#running-the-pipeline-in-stages)
 
-GPU 先串行测试；总生成量按 `候选对数 × seeds × 每 seed 样本数` 计算。先测本机实际耗时、峰值显存、输出体积及失败率，再决定规模。本次没有安装环境、下载模型/数据库或提交结构预测任务。
+GPU 先串行测试；总生成量按 `候选对数 × seeds × 每 seed 样本数` 计算。本轮复用已有 AF2 权重，另建隔离的 CPU 教程评分环境；未下载 AF3 权重或完整数据库。实际命令、配置与耗时见 `results/*_run.json`，本轮没有测量可靠的峰值显存。
 
 ## 6. 建议怎样一步步验证
 
-以下是拟议实验，不是已经完成的结果；旧 Fusion-pMT 复现实验保持停止。
+以下是分阶段验证计划，不代表各阶段已经完成；当前仅完成教程评分和单个参考复合物的初步试跑，旧 Fusion-pMT 复现实验保持停止。
 
 | 阶段 | 工作 | 完成后应该看到什么 |
 | --- | --- | --- |
@@ -90,3 +90,35 @@ GPU 先串行测试；总生成量按 `候选对数 × seeds × 每 seed 样本�
 现成分类器的训练数据也要对账：enFoldX 当前人类模型说明列出 VDJdb 2025-02/2025-09 数据，因此不能直接拿这些数据随机抽样作独立评测，也不能用已包含九月数据的权重复现论文“二月训练→九月验证”的 0.86/0.77。应核对具体权重对应的训练版本及正/负配对，排除重叠，并按所声称的“新 TCR / 新表位”任务控制相似性。无法核验训练重叠的测试只能称流程演示，不能称独立泛化验证。[enFoldX 模型说明](https://github.com/jonlevi/enFoldX/blob/main/models/MODELS.md)
 
 建议先做 S0，再做 S1 和 MHCI 的 `AF3 + enFoldX human_1seed` 小规模 S2；若输入或本机兼容性不满足，就先停在可建模数据审计，而不是将当前 β-only 样例强行转换成全复合物输入。
+
+## 7. 已落地的首轮试跑
+
+[结果总表](results/PILOT_SUMMARY.md)包含公开教程逐对评分复现和本机新生成结构的对照，二者不混作独立验证。输入、来源校验、命令、实际配置、耗时、预测 PDB 和诊断记录均在本目录；第三方权重及缓存不提交。
+
+教程评分使用独立的 Python 3.11 环境；依赖版本与作者 sklearn pickle 对齐。首次运行下载固定提交的 7 个小文件并校验 Git blob，后续可离线使用缓存。
+
+```bash
+python3.11 -m venv /path/to/tutorial-env
+/path/to/tutorial-env/bin/python -m pip install -r structure/requirements-tutorial.txt
+/path/to/tutorial-env/bin/python structure/run_tutorial.py
+/path/to/tutorial-env/bin/python structure/test_pilot.py
+```
+
+结构试跑复用 ColabFold 1.5.5 环境和 AF2 multimer_v3 权重；实际版本见 `results/af2_runtime.json`。`--data` 指向包含 `params/` 的目录，不是 `params/` 本身。仅安装以下脚本的 CPU 依赖不足以完成 AF2 推理，应按 [ColabFold 官方安装说明](https://github.com/sokrypton/ColabFold#running-locally)准备运行时，并核对权重使用条款。
+
+```bash
+CF=/path/to/colabfold-conda
+DATA=/path/to/colabfold-data
+export LD_LIBRARY_PATH="$CF/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+"$CF/bin/python" structure/run_af2_pilot.py prepare
+"$CF/bin/python" structure/run_af2_pilot.py predict --env "$CF" --data "$DATA" --protocol single
+"$CF/bin/python" structure/run_af2_pilot.py analyze --protocol single
+"$CF/bin/python" structure/run_af2_pilot.py predict --env "$CF" --data "$DATA" --protocol msa
+"$CF/bin/python" structure/run_af2_pilot.py analyze --protocol msa
+"$CF/bin/python" structure/capture_runtime.py --data "$DATA"
+"$CF/bin/python" structure/summarize.py
+```
+
+MSA 对照优先使用已保存的 `inputs/6zkw_domain_msa.a3m`，其 SHA256 在 `inputs/msa_manifest.json`。`fetch_msa.py` 可以重新请求公共服务器，但服务器数据库可更新，新结果不保证与本轮完全相同。长链是 unpaired MSA，肽为 query-only，没有真实同源跨链配对。
+
+核查发现上游示例 job_id 将 `6ZKW` 写作 `6kzw`，原始输入文件名保留该别名，生物学参考和链序列以 **6ZKW** 为准。另外保留了最初错误截断 MSA 深度的诊断记录；它不计入有效的 MSA 对照。
