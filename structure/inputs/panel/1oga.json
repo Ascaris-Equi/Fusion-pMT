@@ -1,0 +1,85 @@
+{
+  "case_id": "1oga",
+  "pdb": "1OGA",
+  "mhc_allele": "HLA-A*02:01",
+  "release_date": "2003-06-19T00:00:00.000+00:00",
+  "primary_citation": {
+    "country": "UK",
+    "id": "primary",
+    "journal_abbrev": "Nat.Immunol.",
+    "journal_id_ISSN": "1529-2908",
+    "journal_volume": "4",
+    "page_first": "657",
+    "pdbx_database_id_DOI": "10.1038/NI942",
+    "pdbx_database_id_PubMed": 12796775,
+    "rcsb_ORCID_identifiers": [
+      "?",
+      "?",
+      "?",
+      "?",
+      "?"
+    ],
+    "rcsb_authors": [
+      "Stewart-Jones, G.B.E.",
+      "Mcmichael, A.J.",
+      "Bell, J.I.",
+      "Stuart, D.I.",
+      "Jones, E.Y."
+    ],
+    "rcsb_journal_abbrev": "Nat Immunol",
+    "title": "A Structural Basis for Immunodominant Human T Cell Receptor Recognition",
+    "year": 2003
+  },
+  "sequence_source": "https://raw.githubusercontent.com/phbradley/TCRdock/c5a7af42eeb0c2a4492a4d4fe803f1f9aafb6193/tcrdock/db/ternary_templates_v2.tsv",
+  "source_commit": "c5a7af42eeb0c2a4492a4d4fe803f1f9aafb6193",
+  "source_manifest_sha256": "93359888501e34b156293db6649cb001b03cb182b72f837984eaf6d86db25c6d",
+  "source_pdbfile": "pdb/ternary/1oga.pdb.human.MH1.A-02.A.C.DE.pdb",
+  "reference_url": "https://files.rcsb.org/download/1OGA.pdb",
+  "reference_sha256": "b8b2d613842401258c06b81abd00cf39fbc99cdd42203c843ce7bafdd895064e",
+  "entry_url": "https://data.rcsb.org/rest/v1/core/entry/1OGA",
+  "chain_roles": {
+    "A": "tcra",
+    "B": "tcrb",
+    "C": "pep",
+    "D": "mhca"
+  },
+  "chain_sequences": {
+    "A": "QLLEQSPQFLSIQEGENLTVYCNSSSVFSSLQWYRQEPGEGPVLLVTVVTGGEVKKLKRLTFQFGDARKDSSLHITAAQPGDTGLYLCAGAGSQGNLIFGKGTKLSVKPN",
+    "B": "GITQSPKYLFRKEGQNVTLSCEQNLNHDAMYWYRQDPGQGLRLIYYSQIVNDFQKGDIAEGYSVSREKKESFPLTVTSAQKNPTAFYLCASSSRSSYEQYFGPGTRLTVTED",
+    "C": "GILGFVFTL",
+    "D": "GSHSMRYFFTSVSRPGRGEPRFIAVGYVDDTQFVRFDSDAASQRMEPRAPWIEQEGPEYWDGETRKVKAHSQTHRVDLGTLRGYYNQSEAGSHTVQRMYGCDVGSDWRFLRGYHQYAYDGKDYIALKEDLRSWTAADMAAQTTKHKWEAAHVAEQLRAYLEGTCVEWLRRYLENGKETLQR"
+  },
+  "reference_chain_mapping": {
+    "A": "D",
+    "B": "E",
+    "C": "C",
+    "D": "A"
+  },
+  "chain_id_convention": "original PDB auth chain IDs, not mmCIF label_asym_id",
+  "canonical_sequence_intervals_1based": {
+    "A": [
+      2,
+      111
+    ],
+    "B": [
+      5,
+      116
+    ],
+    "C": [
+      1,
+      9
+    ],
+    "D": [
+      1,
+      181
+    ]
+  },
+  "cdr3_sequences": {
+    "A": "CAGAGSQGNLIF",
+    "B": "CASSSRSSYEQYF"
+  },
+  "scope": "fixed geometry reference panel, not binding classification; public TCRdock cropped domains, not TCRdock algorithm reproduction",
+  "beta2m_input": false,
+  "templates": false,
+  "training_overlap": "model structure-training/near-neighbor overlap not excluded; not independent generalization validation"
+}

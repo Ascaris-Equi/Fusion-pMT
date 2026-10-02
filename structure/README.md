@@ -71,7 +71,7 @@ GPU 先串行测试；总生成量按 `候选对数 × seeds × 每 seed 样本�
 
 ## 6. 建议怎样一步步验证
 
-以下是分阶段验证计划，不代表各阶段已经完成；当前仅完成教程评分和单个参考复合物的初步试跑，旧 Fusion-pMT 复现实验保持停止。
+以下是分阶段验证计划，不代表各阶段已经完成；当前完成教程评分和四个参考复合物的初步几何验证，旧 Fusion-pMT 复现实验保持停止。
 
 | 阶段 | 工作 | 完成后应该看到什么 |
 | --- | --- | --- |
@@ -122,3 +122,29 @@ export LD_LIBRARY_PATH="$CF/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 MSA 对照优先使用已保存的 `inputs/6zkw_domain_msa.a3m`，其 SHA256 在 `inputs/msa_manifest.json`。`fetch_msa.py` 可以重新请求公共服务器，但服务器数据库可更新，新结果不保证与本轮完全相同。长链是 unpaired MSA，肽为 query-only，没有真实同源跨链配对。
 
 核查发现上游示例 job_id 将 `6ZKW` 写作 `6kzw`，原始输入文件名保留该别名，生物学参考和链序列以 **6ZKW** 为准。另外保留了最初错误截断 MSA 深度的诊断记录；它不计入有效的 MSA 对照。
+
+## 8. 多参考结构扩展
+
+2026-10-03 固定加入 1OGA / 5WKH / 6UON，覆盖 HLA-A*02:01 / A*11:01 / C*08:02；与上一轮 6ZKW 对照，保留全部结果，不按预测表现筛掉样本。[多参考结果表](results/reference_panel/RESULTS.md)分别报告单链自对齐、MHC 对齐后的对接偏差和肽–TCR 接触恢复。
+
+输入取自 TCRdock 的锁定版本，是已验证的连续结构域裁剪；并非天然全长 αβ/MHC，也不是该工具专门化算法复现。原始 PDB auth 链映射、SEQRES 区间、释放日期、论文 DOI 与序列均保存在 `inputs/panel/*.json`。由于全部是已知结构配对且未排除模型训练重叠，这仍不是独立结合判别实验。
+
+```bash
+python structure/prepare_reference_panel.py
+# 已提交 A3M 可直接复用；重新搜索才需要执行以下命令。
+for ID in 1oga 5wkh 6uon; do
+  python structure/fetch_msa.py --input-json "structure/inputs/panel/$ID.json" \
+    --output "structure/inputs/panel/$ID.a3m" --cache-dir "structure/cache/msa_panel/$ID"
+done
+# 先按第 7 节复跑 6ZKW 的 MSA 结果，供该表复用。
+# 新输出目录保留本分支已提交的原始结果与耗时。
+RESULTS=structure/results/reproduction/reference_panel
+RUN=reference_panel_reproduction
+"$CF/bin/python" structure/run_reference_panel.py predict --env "$CF" --data "$DATA" \
+  --run-name "$RUN" --result-dir "$RESULTS"
+"$CF/bin/python" structure/run_reference_panel.py analyze --run-name "$RUN" --result-dir "$RESULTS"
+"$CF/bin/python" structure/test_geometry.py
+"$CF/bin/python" structure/test_reference_panel.py
+```
+
+GPU 预测按三个病例串行执行。已有完整结果时 `predict` 拒绝覆盖原始耗时记录，直接用 `analyze` 重新生成表格；完整预测日志和大体积中间文件留在本机忽略目录。接触定义与覆盖规则在 `geometry.py` 和 `metrics.json` 中固定，所有参考坐标仅用于事后评价。

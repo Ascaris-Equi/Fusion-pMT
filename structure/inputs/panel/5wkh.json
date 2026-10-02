@@ -1,0 +1,116 @@
+{
+  "case_id": "5wkh",
+  "pdb": "5WKH",
+  "mhc_allele": "HLA-A*11:01",
+  "release_date": "2017-09-20T00:00:00.000+00:00",
+  "primary_citation": {
+    "country": "UK",
+    "id": "primary",
+    "journal_abbrev": "Nat. Immunol.",
+    "journal_id_ISSN": "1529-2916",
+    "journal_volume": "18",
+    "page_first": "1228",
+    "page_last": "1237",
+    "pdbx_database_id_DOI": "10.1038/ni.3850",
+    "pdbx_database_id_PubMed": 28945243,
+    "rcsb_ORCID_identifiers": [
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?"
+    ],
+    "rcsb_authors": [
+      "Culshaw, A.",
+      "Ladell, K.",
+      "Gras, S.",
+      "McLaren, J.E.",
+      "Miners, K.L.",
+      "Farenc, C.",
+      "van den Heuvel, H.",
+      "Gostick, E.",
+      "Dejnirattisai, W.",
+      "Wangteeraprasert, A.",
+      "Duangchinda, T.",
+      "Chotiyarnwong, P.",
+      "Limpitikul, W.",
+      "Vasanawathana, S.",
+      "Malasit, P.",
+      "Dong, T.",
+      "Rossjohn, J.",
+      "Mongkolsapaya, J.",
+      "Price, D.A.",
+      "Screaton, G.R."
+    ],
+    "rcsb_journal_abbrev": "Nat Immunol",
+    "title": "Germline bias dictates cross-serotype reactivity in a common dengue-virus-specific CD8(+) T cell response.",
+    "year": 2017
+  },
+  "sequence_source": "https://raw.githubusercontent.com/phbradley/TCRdock/c5a7af42eeb0c2a4492a4d4fe803f1f9aafb6193/tcrdock/db/ternary_templates_v2.tsv",
+  "source_commit": "c5a7af42eeb0c2a4492a4d4fe803f1f9aafb6193",
+  "source_manifest_sha256": "93359888501e34b156293db6649cb001b03cb182b72f837984eaf6d86db25c6d",
+  "source_pdbfile": "pdb/ternary/5wkh.pdb.human.MH1.A-11.A.C.DE.pdb",
+  "reference_url": "https://files.rcsb.org/download/5WKH.pdb",
+  "reference_sha256": "937820e3dbe91ef96940ded30605fdc2e77667e3ee64f9f6364dcaafac903bad",
+  "entry_url": "https://data.rcsb.org/rest/v1/core/entry/5WKH",
+  "chain_roles": {
+    "A": "tcra",
+    "B": "tcrb",
+    "C": "pep",
+    "D": "mhca"
+  },
+  "chain_sequences": {
+    "A": "QPVQSPQAVILREGEDAVINCSSSKALYSVHWYRQKHGEAPIFLMILLKGGEQKGHDKISASFNEKKQQSSLYLTASQLSYSGTYFCGLGDAGNMLTFGGGTRLMVKPH",
+    "B": "AGVAQSPRYKIIEKRQSVAFWCNPISGHATLYWYQQILGQGPKLLIQFQNNGVVDDSQLPKDRFSAERLKGVDSTLKIQPAKLEDSAVYLCASSLGQGLLYGYTFGSGTRLTVLED",
+    "C": "GTSGSPIINR",
+    "D": "GSHSMRYFYTSVSRPGRGEPRFIAVGYVDDTQFVRFDSDAASQRMEPRAPWIEQEGPEYWDQETRNVKAQSQTDRVDLGTLRGYYNQSEDGSHTIQIMYGCDVGPDGRFLRGYRQDAYDGKDYIALNEDLRSWTAADMAAQITKRKWEAAHAAEQQRAYLEGRCVEWLRRYLENGKETLQR"
+  },
+  "reference_chain_mapping": {
+    "A": "D",
+    "B": "E",
+    "C": "C",
+    "D": "A"
+  },
+  "chain_id_convention": "original PDB auth chain IDs, not mmCIF label_asym_id",
+  "canonical_sequence_intervals_1based": {
+    "A": [
+      1,
+      109
+    ],
+    "B": [
+      1,
+      116
+    ],
+    "C": [
+      1,
+      10
+    ],
+    "D": [
+      1,
+      181
+    ]
+  },
+  "cdr3_sequences": {
+    "A": "CGLGDAGNMLTF",
+    "B": "CASSLGQGLLYGYTF"
+  },
+  "scope": "fixed geometry reference panel, not binding classification; public TCRdock cropped domains, not TCRdock algorithm reproduction",
+  "beta2m_input": false,
+  "templates": false,
+  "training_overlap": "model structure-training/near-neighbor overlap not excluded; not independent generalization validation"
+}

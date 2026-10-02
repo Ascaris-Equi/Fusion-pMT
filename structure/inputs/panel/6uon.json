@@ -1,0 +1,94 @@
+{
+  "case_id": "6uon",
+  "pdb": "6UON",
+  "mhc_allele": "HLA-C*08:02",
+  "release_date": "2020-05-27T00:00:00.000+00:00",
+  "primary_citation": {
+    "country": "US",
+    "id": "primary",
+    "journal_abbrev": "Proc.Natl.Acad.Sci.USA",
+    "journal_id_ASTM": "PNASA6",
+    "journal_id_CSD": "0040",
+    "journal_id_ISSN": "1091-6490",
+    "journal_volume": "117",
+    "page_first": "12826",
+    "page_last": "12835",
+    "pdbx_database_id_DOI": "10.1073/pnas.1921964117",
+    "pdbx_database_id_PubMed": 32461371,
+    "rcsb_ORCID_identifiers": [
+      "0000-0003-3407-9661",
+      "?",
+      "?",
+      "0000-0003-3716-7448",
+      "?",
+      "?",
+      "0000-0002-7793-3728",
+      "0000-0003-0475-1891"
+    ],
+    "rcsb_authors": [
+      "Sim, M.J.W.",
+      "Lu, J.",
+      "Spencer, M.",
+      "Hopkins, F.",
+      "Tran, E.",
+      "Rosenberg, S.A.",
+      "Long, E.O.",
+      "Sun, P.D."
+    ],
+    "rcsb_journal_abbrev": "Proc Natl Acad Sci U S A",
+    "title": "High-affinity oligoclonal TCRs define effective adoptive T cell therapy targeting mutant KRAS-G12D.",
+    "year": 2020
+  },
+  "sequence_source": "https://raw.githubusercontent.com/phbradley/TCRdock/c5a7af42eeb0c2a4492a4d4fe803f1f9aafb6193/tcrdock/db/ternary_templates_v2.tsv",
+  "source_commit": "c5a7af42eeb0c2a4492a4d4fe803f1f9aafb6193",
+  "source_manifest_sha256": "93359888501e34b156293db6649cb001b03cb182b72f837984eaf6d86db25c6d",
+  "source_pdbfile": "pdb/ternary/6uon.pdb.human.MH1.C-08.A.C.IJ.pdb",
+  "reference_url": "https://files.rcsb.org/download/6UON.pdb",
+  "reference_sha256": "72416c4746e77591bd64dcea133a12ca71da1997f2f2a838b015d34c7fcd6374",
+  "entry_url": "https://data.rcsb.org/rest/v1/core/entry/6UON",
+  "chain_roles": {
+    "A": "tcra",
+    "B": "tcrb",
+    "C": "pep",
+    "D": "mhca"
+  },
+  "chain_sequences": {
+    "A": "VEQNSGPLSVPEGAIASLNCTYSDRGSQSFFWYRQYSGKSPELIMFIYSNGDKEDGRFTAQLNKASQYVSLLIRDSQPSDSATYLCAAAMDSSYKLIFGSGTRLLVRPD",
+    "B": "GITQSPRYKITETGRQVTLMCHQTWSHSYMFWYRQDLGHGLRLIYYSAAADITDKGEVPDGYVVSRSKTENFPLTLESATRSQTSVYFCASSDPGTEAFFGQGTRLTVVED",
+    "C": "GADGVGKSAL",
+    "D": "SHSMRYFYTAVSRPGRGEPRFIAVGYVDDTQFVQFDSDAASPRGEPRAPWVEQEGPEYWDRETQKYKRQAQTDRVSLRNLRGYYNQSEAGSHTLQRMYGCDLGPDGRLLRGYNQFAYDGKDYIALNEDLRSWTAADKAAQITQRKWEAAREAEQRRAYLEGTCVEWLRRYLENGKKTLQRA"
+  },
+  "reference_chain_mapping": {
+    "A": "I",
+    "B": "J",
+    "C": "C",
+    "D": "A"
+  },
+  "chain_id_convention": "original PDB auth chain IDs, not mmCIF label_asym_id",
+  "canonical_sequence_intervals_1based": {
+    "A": [
+      4,
+      112
+    ],
+    "B": [
+      3,
+      113
+    ],
+    "C": [
+      1,
+      10
+    ],
+    "D": [
+      2,
+      182
+    ]
+  },
+  "cdr3_sequences": {
+    "A": "CAAAMDSSYKLIF",
+    "B": "CASSDPGTEAFF"
+  },
+  "scope": "fixed geometry reference panel, not binding classification; public TCRdock cropped domains, not TCRdock algorithm reproduction",
+  "beta2m_input": false,
+  "templates": false,
+  "training_overlap": "model structure-training/near-neighbor overlap not excluded; not independent generalization validation"
+}

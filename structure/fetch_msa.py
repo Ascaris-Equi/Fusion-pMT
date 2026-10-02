@@ -22,16 +22,21 @@ def request_json(path, data=None):
         return json.load(response)
 
 
-def main(ticket_id):
-    info = json.loads((ROOT / "inputs" / "6kzw_domain_complex.json").read_text())
+def main(ticket_id, input_json=None, output=None, cache_dir=None):
+    input_json = input_json or ROOT / "inputs" / "6kzw_domain_complex.json"
+    output = output or ROOT / "inputs" / "6zkw_domain_msa.a3m"
+    info = json.loads(input_json.read_text())
     chains = info["chain_sequences"]
+    if list(chains) != ["A", "B", "C", "D"]:
+        raise ValueError("Expected alpha/beta/peptide/MHC chain order A/B/C/D")
     searched = [c for c in chains if len(chains[c]) >= 20]
     query_ids = {c: 101 + i for i, c in enumerate(searched)}
     query = "".join(f">{query_ids[c]}\n{chains[c]}\n" for c in searched)
-    cache = ROOT / "cache" / "msa"
+    cache = cache_dir or ROOT / "cache" / "msa"
     cache.mkdir(parents=True, exist_ok=True)
     archive = cache / "out.tar.gz"
-    manifest_path = ROOT / "inputs" / "msa_manifest.json"
+    manifest_path = ROOT / "inputs" / "msa_manifest.json" if output.name == "6zkw_domain_msa.a3m" else output.with_suffix(".manifest.json")
+    ticket_path = cache / "ticket.json"
     query_sha256 = hashlib.sha256(query.encode()).hexdigest()
     previous = json.loads(manifest_path.read_text()) if manifest_path.exists() else {}
     if archive.exists() and previous:
@@ -41,11 +46,17 @@ def main(ticket_id):
             raise ValueError("Cached MSA archive checksum mismatch")
         ticket_id = ticket_id or previous.get("ticket_id")
     if not archive.exists():
+        if ticket_id is None and ticket_path.exists():
+            saved_ticket = json.loads(ticket_path.read_text())
+            if saved_ticket["query_sha256"] != query_sha256:
+                raise ValueError("Cached MSA ticket belongs to different queries")
+            ticket_id = saved_ticket["ticket_id"]
         if ticket_id is None:
             answer = request_json("/ticket/msa", {"q": query, "mode": "env"})
             if answer["status"] in ["ERROR", "MAINTENANCE", "RATELIMIT"]:
                 raise RuntimeError(answer)
             ticket_id = answer["id"]
+            ticket_path.write_text(json.dumps({"ticket_id": ticket_id, "query_sha256": query_sha256}) + "\n")
         started = time.time()
         while True:
             answer = request_json("/ticket/" + ticket_id)
@@ -94,12 +105,12 @@ def main(ticket_id):
         for header, aligned in individual[chain]:
             padded = "-" * sum(lengths[:i]) + aligned + "-" * sum(lengths[i + 1:])
             lines.extend([header, padded])
-    output = ROOT / "inputs" / "6zkw_domain_msa.a3m"
+    output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text("\n".join(lines) + "\n", newline="\n")
     manifest = {
         "server": SERVER, "ticket_id": ticket_id, "mode": "env", "templates": False,
         "homolog_pairing": False, "query_ids": query_ids, "rows_per_chain": counts,
-        "peptide_msa": "query only, not sent to MSA server", "public_input_pdb": "6ZKW",
+        "peptide_msa": "query only, not sent to MSA server", "public_input_pdb": info["pdb"],
         "source_query_sha256": query_sha256,
         "archive_sha256": hashlib.sha256(archive.read_bytes()).hexdigest(),
         "a3m_sha256": hashlib.sha256(output.read_bytes()).hexdigest(),
@@ -111,4 +122,8 @@ def main(ticket_id):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--ticket-id", default=None)
-    main(parser.parse_args().ticket_id)
+    parser.add_argument("--input-json", type=Path)
+    parser.add_argument("--output", type=Path)
+    parser.add_argument("--cache-dir", type=Path)
+    args = parser.parse_args()
+    main(args.ticket_id, args.input_json, args.output, args.cache_dir)

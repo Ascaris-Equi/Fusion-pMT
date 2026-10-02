@@ -1,0 +1,46 @@
+{
+  "selection": "fixed 1OGA/5WKH/6UON before inference; three different human MHCI alleles; no result-based exclusion",
+  "source_commit": "c5a7af42eeb0c2a4492a4d4fe803f1f9aafb6193",
+  "source_manifest_sha256": "93359888501e34b156293db6649cb001b03cb182b72f837984eaf6d86db25c6d",
+  "cases": [
+    {
+      "case_id": "1oga",
+      "pdb": "1OGA",
+      "mhc_allele": "HLA-A*02:01",
+      "input_json": "1oga.json",
+      "release_date": "2003-06-19T00:00:00.000+00:00",
+      "chain_lengths": {
+        "A": 110,
+        "B": 112,
+        "C": 9,
+        "D": 181
+      }
+    },
+    {
+      "case_id": "5wkh",
+      "pdb": "5WKH",
+      "mhc_allele": "HLA-A*11:01",
+      "input_json": "5wkh.json",
+      "release_date": "2017-09-20T00:00:00.000+00:00",
+      "chain_lengths": {
+        "A": 109,
+        "B": 116,
+        "C": 10,
+        "D": 181
+      }
+    },
+    {
+      "case_id": "6uon",
+      "pdb": "6UON",
+      "mhc_allele": "HLA-C*08:02",
+      "input_json": "6uon.json",
+      "release_date": "2020-05-27T00:00:00.000+00:00",
+      "chain_lengths": {
+        "A": 109,
+        "B": 111,
+        "C": 10,
+        "D": 181
+      }
+    }
+  ]
+}
